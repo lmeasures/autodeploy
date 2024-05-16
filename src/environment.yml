@@ -12,6 +12,8 @@ dependencies:
   - openssl=3.3.0=hcfcfb64_0
   - pip=24.0=pyhd8ed1ab_0
   - python=3.12.3=h2628c8c_0_cpython
+  - python_abi=3.12=4_cp312
+  - pyyaml=6.0.1=py312he70551f_1
   - setuptools=69.5.1=pyhd8ed1ab_0
   - tk=8.6.13=h5226925_1
   - tzdata=2024a=h0c530f3_0
@@ -19,6 +21,8 @@ dependencies:
   - vc=14.3=hcf57466_18
   - vc14_runtime=14.38.33130=h82b7239_18
   - vs2015_runtime=14.38.33130=hcb4865c_18
+  - watchdog=4.0.0=py312h2e8e312_0
   - wheel=0.43.0=pyhd8ed1ab_1
   - xz=5.2.6=h8d14728_0
+  - yaml=0.2.5=h8ffe710_2
 prefix: C:\Users\Leem\miniforge-pypy3\envs\autodeploy
