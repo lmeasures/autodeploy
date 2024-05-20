@@ -13,6 +13,7 @@ def move_and_unpack (application_settings):
         zip_ref.extractall(application_settings["env_target_directory"])
         
     # system not finding *_env.zip < - TODO
+    # https://stackoverflow.com/questions/8107352/force-overwrite-in-os-rename
         
     os.remove(f"{application_settings["env_target_directory"]}\\{application_settings["app_name"]}_env.zip")
     os.remove(f"{application_settings["code_target_directory"]}\\{application_settings["app_name"]}.zip")
