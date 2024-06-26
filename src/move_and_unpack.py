@@ -4,24 +4,11 @@ import time
 from zipfile import ZipFile as zf
 import os
 
-def mkdir_p(path):
-    print("||| Attempting to create directory", path)
-    try:
-        os.makedirs(path)
-        print("|| Success")
-    except OSError as exc:
-        if exc.errno == errno.EEXIST and os.path.isdir(path):
-            print("|| Directory Exists")
-            pass
-        else: raise
-        
-def get_most_recently_modified_directory(search_path):
-    return max([f for f in os.scandir(search_path)], key=lambda x: x.stat().st_mtime).path
+from gen_ops import mkdir_p
 
-def move_and_unpack (application_settings):
+
+def move_and_unpack (application_settings, latest_build_folder):
     print(f"|| Change detected, deploying {application_settings["app_name"]}")
-    
-    latest_build_folder = get_most_recently_modified_directory(f"{application_settings["source_directory"]}\\")
     
     print("|| Removing old backups")
     if os.path.exists(f"{application_settings["code_target_directory"]}_backup"): shutil.rmtree(f"{application_settings["code_target_directory"]}_backup")

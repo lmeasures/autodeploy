@@ -15,7 +15,6 @@ app_list: dict[str, AppListItem] = {
         "app_type": "fast-api",
         "service_name": "DummyService",
         "website_name": "application_name",
-        "powershell_script_path": ""
     }
 }
 

@@ -10,7 +10,7 @@ def check_service_exists(svc):
     ],
     stdout=sys.stdout)
     result = ret.communicate()[0]
-    return result.returncode
+    return False if result.returncode == "0" else True
 
 def start_service(svc):
     os.system(f"net start {svc}")
@@ -18,6 +18,20 @@ def start_service(svc):
 def stop_service(svc):
     os.system(f"net stop {svc}")
     
+
+def check_website_exists(website):
+    ret = subprocess.Popen([
+        "powershell.exe",
+        "Import-Module IISAdministration",
+        f'$response = Get-IISSite "{website}" 3>&1',
+        'if ($response -match "does not")',
+        '{ exit 0 }',
+        'else',
+        '{ exit 1 }',
+        ],
+        stdout=sys.stdout)
+    result = ret.communicate()[0]
+    return False if result.returncode == "0" else True
 
 def start_website(website):
     ret = subprocess.Popen([
