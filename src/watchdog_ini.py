@@ -1,57 +1,55 @@
+import json
+from os import walk
 import subprocess
 from watchdog.observers import Observer
 from watchdog.observers.api import BaseObserver
 import time
 
-from gen_ops import get_most_recently_modified_directory
+from gen_ops import get_most_recently_modified_directory, mkdir_p
 from move_and_unpack import move_and_unpack
-from server_controls import check_service_exists, check_website_exists, start_service, start_website, stop_service, stop_website
-from settings import app_list
+from server_controls import check_service_exists, run_script, website_exists, start_service, start_website, stop_service, stop_website
+from settings import app_list, watchdog_app_settings
+
+import glob
+
+from pprint import pprint
 
 class Event():
     def dispatch(self,event):
-        if event.event_type == 'created' or event.event_type == 'modified' or event.event_type == 'moved':
+        if event.event_type == 'created' or event.event_type == 'modified':
             app_settings = app_list[event.src_path.split("\\")[-2]]
+            print("|> Change Detected in", app_settings["app_name"])
             
+            print("| Getting latest build path")
             latest_build_folder = get_most_recently_modified_directory(f"{app_settings["source_directory"]}\\")
             
-            ## determine if it's a first time deployment
-            # if website doesn't exist- do first time setup
-                ## perform first-time setup operations
-                    ##### _WHAT ARE FIRST TIME SETUP OPERATIONSSSS_ #####
-                        #### for fastcgi apps- these are.. which apps? TODO
-                            # wfastcgi-enable
-                            # create website
-                        #### for react apps 
-                            # create website
-                        #### for vue apps
-                            # service?? TODO
-                            # create website
-                        #### for flask apps
-                        #
-                        #### for fast-api apps
-                        #
-                        
-            if check_website_exists(app_settings["website_name"]):
-                stop_website(app_settings["website_name"])
-                            
-            if check_service_exists(app_settings["service_name"]):
-                stop_service(app_settings["service_name"])
-                
-            move_and_unpack(app_settings, latest_build_folder)
+            print("| Getting deployment settings from newest build")
+            with open(f"{latest_build_folder}\\deployment_scripts\\deployment_settings.json") as deployment_settings_file:
+                deployment_settings = json.load(deployment_settings_file)
             
-            # fire off powershell script
-            subprocess.call([f"{latest_build_folder}deployment_script.ps1"])
+            scripts = []
             
-            start_service(app_settings["service_name"])
-            start_website(app_settings["website_name"])
+            print("| Determining if first-time-setup required")
+            if not website_exists(app_settings["app_name"]):
+                print("| Website does not exist. Adding first time setup scripts to pipeline")
+                scripts.append(glob.glob(f"{latest_build_folder}\\deployment_scripts\\first_time_setup\\*.ps1"))
+                print("| Creating fresh directories:")
+                print(f"| > {deployment_settings["env_target_directory"]}")
+                mkdir_p(f"{deployment_settings["env_target_directory"]}\\")
+                print(f"| > {deployment_settings["code_target_directory"]}")
+                mkdir_p(f"{deployment_settings["code_target_directory"]}\\")
             
-        ## rely on powershell script- one for each type of application
-            ## have powershell script be in repo for source-control
-            ## have application run script 
-        
-
-
+            print("| Adding standard scripts to pipeline")
+            scripts.append(glob.glob(f"{latest_build_folder}\\deployment_scripts\\*.ps1"))
+            
+            print("| Executing pipeline")
+            for group in scripts:
+                for script in group:
+                    print(f"|> Executing: {script.split("\\")[-1]}")
+                    response = run_script(script)
+                    print(f"| {response}")
+            
+            
 observers: list[BaseObserver] = []
 for app in app_list.keys():
     observer = Observer()
@@ -64,7 +62,7 @@ observer.start()
 try:
     print("| Watching")
     while True:
-        time.sleep(1)
+        time.sleep(watchdog_app_settings["query_timer"])
 except KeyboardInterrupt:
     print("| Terminating watchdog")
     for o in observers:

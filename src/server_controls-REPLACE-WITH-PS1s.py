@@ -18,20 +18,29 @@ def start_service(svc):
 def stop_service(svc):
     os.system(f"net stop {svc}")
     
-
-def check_website_exists(website):
-    ret = subprocess.Popen([
+    
+def run_script(path):
+    ret = subprocess.run([
         "powershell.exe",
-        "Import-Module IISAdministration",
-        f'$response = Get-IISSite "{website}" 3>&1',
-        'if ($response -match "does not")',
-        '{ exit 0 }',
-        'else',
-        '{ exit 1 }',
+        "Set-ExecutionPolicy -ExecutionPolicy Bypass;",
+        f"{path}",
         ],
+        shell=True,
         stdout=sys.stdout)
-    result = ret.communicate()[0]
-    return False if result.returncode == "0" else True
+    return "Success" if ret.returncode == 0 else f"Error: {ret.returncode}"
+    
+
+def website_exists(website):
+    path = os.path.abspath("./src/scripts/check_website_exists.ps1")
+    ret = subprocess.run([
+        "powershell.exe",
+        "Set-ExecutionPolicy -ExecutionPolicy Bypass;",
+        f"{path}",
+        f"{website}",
+        ],
+        shell=True,
+        stdout=sys.stdout)
+    return False if ret.returncode == 0 else True
 
 def start_website(website):
     ret = subprocess.Popen([
