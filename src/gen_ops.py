@@ -1,6 +1,8 @@
 
 import errno
 import os
+import subprocess
+import sys
 
 
 def get_most_recently_modified_directory(search_path):
@@ -18,3 +20,27 @@ def mkdir_p(path):
             pass
         else: raise
         
+          
+def run_script(path):
+    ret = subprocess.run([
+        "powershell.exe",
+        "Set-ExecutionPolicy -ExecutionPolicy Bypass;",
+        f"{path}",
+        ],
+        shell=True,
+        stdout=sys.stdout)
+    return "Success" if ret.returncode == 0 else f"Error: {ret.returncode}"
+    
+
+def website_exists(website):
+    ret = subprocess.run([
+        "powershell.exe",
+        "Set-ExecutionPolicy -ExecutionPolicy Bypass;",
+        "Import-Module IISAdministration;",
+        f"$response = Get-IISSite {website} 3>&1;",
+        '''if ($response -match "does not")
+        { exit 0 }
+        else { exit 1 }
+        '''
+    ])
+

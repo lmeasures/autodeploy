@@ -1,19 +1,20 @@
 import json
 from os import walk
+import os
 import subprocess
+import sys
 from watchdog.observers import Observer
 from watchdog.observers.api import BaseObserver
 import time
 
-from gen_ops import get_most_recently_modified_directory, mkdir_p
-from move_and_unpack import move_and_unpack
-from server_controls import check_service_exists, run_script, website_exists, start_service, start_website, stop_service, stop_website
+from gen_ops import get_most_recently_modified_directory, mkdir_p, run_script, website_exists
 from settings import app_list, watchdog_app_settings
 
 import glob
 
 from pprint import pprint
 
+ 
 class Event():
     def dispatch(self,event):
         if event.event_type == 'created' or event.event_type == 'modified':
@@ -49,26 +50,28 @@ class Event():
                     response = run_script(script)
                     print(f"| {response}")
             
-            
-observers: list[BaseObserver] = []
-for app in app_list.keys():
-    observer = Observer()
-    print("| Observer created for", app, "in", app_list[app]["source_directory"])
-    observer.schedule(Event(), app_list[app]["source_directory"])
-    observer.name = f"Observer_{app}"
-    observers.append(observer)
-observer.start()
+# def begin_running():      
+#     observers: list[BaseObserver] = []
+#     for app in app_list.keys():
+#         observer = Observer()
+#         print("| Observer created for", app, "in", app_list[app]["source_directory"])
+#         observer.schedule(Event(), app_list[app]["source_directory"])
+#         observer.name = f"Observer_{app}"
+#         observers.append(observer)
+#     observer.start()
 
-try:
-    print("| Watching")
-    while True:
-        time.sleep(watchdog_app_settings["query_timer"])
-except KeyboardInterrupt:
-    print("| Terminating watchdog")
-    for o in observers:
-        o.unschedule_all()
-        o.stop()
+#     try:
+#         print("| Watching")
+#         while True:
+#             time.sleep(watchdog_app_settings["query_timer"])
+#     except KeyboardInterrupt:
+#         print("| Terminating watchdog")
+#         for o in observers:
+#             o.unschedule_all()
+#             o.stop()
         
-for o in observers:
-    o.join()
+#     for o in observers:
+#         o.join()
     
+    
+# begin_running()
