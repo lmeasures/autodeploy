@@ -160,30 +160,30 @@ python ./src/service.py stop
 
 | Package Name | Version | Description | GitHub URL | [SourceRank](https://docs.libraries.io/overview.html#sourcerank) | Shortfalls/Issues [^7_00_03] | Mitigation [^7_00_03] | Modifications [^7_00_05] |
 |--|--|--|--|--|--|--|--|
-| bzip2 | 1.0.8 |  |  | None | ['versions_present', 'recent_release', 'one_point_oh', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| bzip2 | 1.0.8 |  |  | None | ['repository_present', 'readme_present', 'recent_release', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
 | ca-certificates=2024.6.2=h56e8100_0 | None |  |  |  |  |  |  |
 | conda-pack=0.8.0=pyhd8ed1ab_0 | None |  |  |  |  |  |  |
 | libexpat | 2.6.2 |  |  |  |  |  |  |
-| libffi | 3.4.2 |  |  | None | ['repository_present', 'readme_present', 'versions_present', 'follows_semver', 'recent_release', 'one_point_oh', 'dependent_repositories', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| libsqlite | 3.45.3 |  |  |  |  |  |  |
-| libzlib | 1.2.13 |  |  |  |  |  |  |
-| openssl | 3.3.1 |  |  | None | ['repository_present', 'readme_present', 'license_present', 'follows_semver', 'recent_release', 'one_point_oh', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| libffi | 3.4.2 |  |  | None | ['follows_semver', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| libsqlite | 3.45.3 |  |  | None | ['subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| libzlib | 1.2.13 |  |  | None | ['follows_semver', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| openssl | 3.3.1 |  |  | None | ['follows_semver', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
 | pip | 24.0 |  |  | None | ['follows_semver', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| python | 3.12.3 |  |  | None | ['repository_present', 'readme_present', 'versions_present', 'recent_release', 'not_brand_new', 'one_point_oh', 'stars', 'contributors', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| python_abi | 3.12 |  |  |  |  |  |  |
+| python | 3.12.3 |  |  | None | ['repository_present', 'readme_present', 'follows_semver', 'stars', 'contributors', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| python_abi | 3.12 |  |  | None | ['follows_semver', 'recent_release', 'one_point_oh', 'stars', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
 | pywin32=306=py312h53d5487_2 | None |  |  |  |  |  |  |
-| pyyaml | 6.0.1 |  |  | None | ['follows_semver', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| setuptools | 69.5.1 |  |  | None | ['follows_semver', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| tk | 8.6.13 |  |  | None | ['recent_release', 'one_point_oh', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| pyyaml | 6.0.1 |  |  | None | ['follows_semver', 'recent_release', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| setuptools | 69.5.1 |  |  | None | ['all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| tk | 8.6.13 |  |  | None | ['subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
 | tzdata=2024a=h0c530f3_0 | None |  |  |  |  |  |  |
-| ucrt | 10.0.22621 |  |  |  |  |  |  |
-| vc | 14.3 |  |  | None | ['versions_present', 'recent_release', 'dependent_repositories', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| ucrt | 10.0.22621 |  |  | None | ['basic_info_present', 'repository_present', 'readme_present', 'versions_present', 'follows_semver', 'recent_release', 'one_point_oh', 'dependent_repositories', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| vc | 14.3 |  |  | None | ['follows_semver', 'recent_release', 'one_point_oh', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
 | vc14_runtime | 14.38.33130 |  |  |  |  |  |  |
-| vs2015_runtime | 14.38.33130 |  |  |  |  |  |  |
-| watchdog | 4.0.0 |  |  | None | ['all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| wheel | 0.43.0 |  |  | None | ['follows_semver', 'one_point_oh', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| xz | 5.2.6 |  |  | None | ['repository_present', 'readme_present', 'versions_present', 'recent_release', 'one_point_oh', 'dependent_repositories', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
-| yaml | 0.2.5 |  |  |  |  |  |  |
+| vs2015_runtime | 14.38.33130 |  |  | None | ['basic_info_present', 'repository_present', 'readme_present', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| watchdog | 4.0.0 |  |  | None | ['subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| wheel | 0.43.0 |  |  | None | ['one_point_oh', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| xz | 5.2.6 |  |  | None | ['subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
+| yaml | 0.2.5 |  |  | None | ['repository_present', 'readme_present', 'one_point_oh', 'stars', 'contributors', 'subscribers', 'all_prereleases', 'any_outdated_dependencies', 'is_deprecated', 'is_unmaintained', 'is_removed'] |  |  |
 
 ## <span style="color:orange"> Licensing
 
