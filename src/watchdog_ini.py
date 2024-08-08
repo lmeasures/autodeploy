@@ -18,6 +18,7 @@ from pprint import pprint
 class Event():
     def dispatch(self,event):
         if event.event_type == 'created' or event.event_type == 'modified':
+            time.sleep(5)
             app_settings = app_list[event.src_path.split("\\")[-2]]
             print("|> Change Detected in", app_settings["app_name"])
             
