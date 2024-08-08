@@ -1,18 +1,19 @@
-#generated with `conda env export > environment.yml`
 name: autodeploy
 channels:
   - conda-forge
 dependencies:
   - bzip2=1.0.8=hcfcfb64_5
-  - ca-certificates=2024.2.2=h56e8100_0
+  - ca-certificates=2024.6.2=h56e8100_0
+  - conda-pack=0.8.0=pyhd8ed1ab_0
   - libexpat=2.6.2=h63175ca_0
   - libffi=3.4.2=h8ffe710_5
   - libsqlite=3.45.3=hcfcfb64_0
   - libzlib=1.2.13=hcfcfb64_5
-  - openssl=3.3.0=hcfcfb64_0
+  - openssl=3.3.1=h2466b09_1
   - pip=24.0=pyhd8ed1ab_0
   - python=3.12.3=h2628c8c_0_cpython
   - python_abi=3.12=4_cp312
+  - pywin32=306=py312h53d5487_2
   - pyyaml=6.0.1=py312he70551f_1
   - setuptools=69.5.1=pyhd8ed1ab_0
   - tk=8.6.13=h5226925_1

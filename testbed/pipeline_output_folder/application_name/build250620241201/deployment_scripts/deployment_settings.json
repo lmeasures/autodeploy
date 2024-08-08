@@ -1,5 +1,4 @@
 {
-        "service_name": "Dummoi",
         "env_target_directory": "C:\\Projects\\work_autodeploy\\testbed\\d$\\envs\\application_name",
         "code_target_directory": "C:\\Projects\\work_autodeploy\\testbed\\d$\\websites\\application_name"
 }
